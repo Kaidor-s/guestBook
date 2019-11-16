@@ -1,0 +1,23 @@
+<script>
+			document.addEventListener("DOMContentLoaded", function(){
+				let infoB = document.getElementById('info');
+				let audio = new Audio(); 
+				let srcStr = 'sound/click.mp3';
+				audio.src = srcStr;
+
+				infoB.addEventListener('mousedown', function(){
+					this.setAttribute('class', 'click');
+					let interval = setInterval(function(){
+						let audio = new Audio();
+						audio.src = srcStr;
+						audio.volume = 0.1;
+						audio.play()
+
+						clearInterval(interval);
+					}, audio.duration); 
+				}.bind(infoB));
+				infoB.addEventListener('mouseup', function(){
+					this.setAttribute('class', 'active');
+				}.bind(infoB));
+			});
+		</script>

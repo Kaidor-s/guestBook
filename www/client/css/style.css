@@ -1,0 +1,231 @@
+/*
+-------------------------------------
+media
+-------------------------------------
+*/
+
+@font-face {
+	font-family: Titile_header; /* Гарнитура шрифта */
+	src: url(fonts/banty_bold.ttf); /* Путь к файлу со шрифтом */
+}
+@font-face {
+	font-family: buttonText; /* Гарнитура шрифта */
+	src: url(fonts/AirmoleAntique_Regular.ttf); /* Путь к файлу со шрифтом */
+}
+@font-face {
+	font-family: Titile_footer; /* Гарнитура шрифта */
+	src: url(fonts/Acsiomasupershockc.otf); /* Путь к файлу со шрифтом */
+}
+
+
+/*
+-------------------------------------
+document
+-------------------------------------
+*/
+html{
+	overflow: hidden;
+} 
+body{
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+}
+body::-webkit-scrollbar {
+    width: 10px;
+}
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3); 
+}
+body::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.5); 
+}
+
+
+/*
+-------------------------------------
+header
+-------------------------------------
+*/
+#header{ 
+	min-height: 60px;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 40px;
+	border-bottom: 4px solid #9dc2fa;
+	background-color: #44c5c9;
+	user-select: none;
+	position: relative;
+	z-index: 1000;
+}
+#header a{
+	text-decoration: none;
+	color: black;
+}
+#header .text{
+	font-family: Titile_header;
+	font-size: 40px;
+	margin-top: -6px;
+	letter-spacing: 1.5px;
+	text-shadow: 2px 2px 0 #84f1f5;
+}
+#info{
+	width: 40px;
+	height: 40px;
+	border-radius: 24px;
+	margin-top: 10px;
+	outline: none;
+	background-color: #e0f9ff;
+	font: bold 22px buttonText;
+	text-shadow: 0 0 5px #6072cc;
+	cursor: pointer;
+}
+.active{ 
+	border: 2px solid #1e95b0;
+	border-top: 2px solid #bae8ff;
+	border-left: 2px solid #bae8ff;
+}
+.click{
+	border: 2px solid #bae8ff;
+	border-top: 2px solid #1e95b0;
+	border-left: 2px solid #1e95b0;
+}
+
+
+/*
+-------------------------------------
+content
+-------------------------------------
+*/
+#content{
+	width: 100vw;
+	align-self: center;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	padding: 10px 10px;
+
+	background-image: url('backgrounds/backg.jpg');
+	background-repeat: no-repeat;
+	background-clip: border-box;
+}
+.content_animation{
+	transition:10s;
+	transition-property: background-position;
+}
+.size{
+	min-height: calc(100vh - 80px);
+}
+
+
+/*
+-------------------------------------
+footer
+-------------------------------------
+*/
+#footer{
+	min-height: 120px;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: flex-end;
+	background: url(backgrounds/footer.png);
+	background-color: #363636;
+	user-select: none;
+	position: relative;
+	z-index: 1000;
+	border-top: 1px solid black;
+}
+#footer .text{
+	font: 20px Titile_footer;
+	text-shadow: 1px 0 7px white;
+	letter-spacing: -1px;
+	margin-bottom: 10px;
+	position: relative;
+}
+#footer .copyText{
+	left: calc(100vw - 500px);
+}
+.github{
+	background-color: white;
+	border-radius: 40px;
+	min-width: 70px;
+	min-height: 70px;
+	margin: 22px 20px;
+}
+.github .gitTitle{
+	margin: 25px 0 0 16px;
+	text-shadow: 0 1px 0 white;
+	position: absolute;
+	text-decoration: none;
+	color: black;
+	font: 12px sans-serif;
+}
+.github:hover{
+	box-shadow: 0 0 10px white;
+}
+.github img{
+	position: absolute;
+	width:75px;
+	height:75px;
+}
+
+
+/*
+-------------------------------------
+style properties for js components 
+| | | | | | | | | | | | | | | | | |
+V V V V V V V V V V V V V V V V V V
+-------------------------------------
+*/
+/*
+-------------------------------------
+infoBlock
+-------------------------------------
+*/
+#infoB_content{
+	width: 360px;
+	height: calc(100vh - 60px);
+	margin-left: calc(100vw - 360px);
+	position: absolute;
+	background-color: #675df0;
+	z-index: 999;
+
+	transition: 2s;
+	transition-property: margin-top;
+}
+.infoB_content_animationStart{	
+	margin-top: calc( ( (100vh - 60px) - 64px ) * -1 );
+}
+.infoB_content_animationEnd{
+	margin-top: 64px;
+}
+
+#infoB_header{
+	width: 100%;
+	height: 60px;
+	position: relative;
+	z-index: 997;
+
+	transition: 3s;
+	transition-property: background-color;
+}
+#infoB_text{
+	width: 300px;
+	height: 70vh;
+	margin: 0 auto;
+	position: relative;
+	z-index: 997;
+
+	transition: 3s;
+	transition-property: background-color;
+}
+
+.infoB_elemsContent_animationStart{
+	background-color: inherit;
+}
+.infoB_elemsContent_animationEnd{
+	background-color: #9dc2fa;
+}
