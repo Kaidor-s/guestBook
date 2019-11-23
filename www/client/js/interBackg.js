@@ -5,6 +5,7 @@ class GetInteractiveBackground{
 		this.content.style.width = window.innerWidth;
 	}
 
+	// статические данные и их произведение
 	static winSize = {
 		w: window.innerWidth,
 		h: window.innerHeight, 
@@ -37,19 +38,7 @@ class GetInteractiveBackground{
 		return mapBckgSize;	
 	}
 
-	animation(x, y, pointCenter, mapBckgSize){//математическая функция анимации
-		let indent = {x: pointCenter.x - x, y: pointCenter.y - y}; //отступ от центра
-		let result = {x: mapBckgSize.x + indent.x, y: mapBckgSize.y + indent.y}; //(отступ от края фона до края окна браузера) + отступ от центра
-			
-		for(let key in result){ //если цифра ликом большая и пересекает пределы - изменяем ее до предела
-			if( result[key] <= mapBckgSize[key]*2 ){ result[key] = mapBckgSize[key]*2; };
-			if( result[key] >= 0 ){ result[key] = 0;};
-		};
-
-		this.content.style.backgroundPosition = `${result.x}px ${result.y}px`; //установка позиции фона в риалтайм
-	}
-
-
+	//дополнительно
 	sistemSearchWinSizeChanges(){//система поиска изменений размера окна браузера(производит действия если изменения были обнаруженны)
 		// '1650px 1100px'
 		let interval = setInterval(function(){
@@ -69,7 +58,18 @@ class GetInteractiveBackground{
 		return `${window.innerHeight * 2 * 1.5}px ${window.innerHeight * 1.5}px`;
 	}
 
+	//главные процессы
+	animation(x, y, pointCenter, mapBckgSize){//математическая функция анимации
+		let indent = {x: pointCenter.x - x, y: pointCenter.y - y}; //отступ от центра
+		let result = {x: mapBckgSize.x + indent.x, y: mapBckgSize.y + indent.y}; //(отступ от края фона до края окна браузера) + отступ от центра
+			
+		for(let key in result){ //если цифра ликом большая и пересекает пределы - изменяем ее до предела
+			if( result[key] <= mapBckgSize[key]*2 ){ result[key] = mapBckgSize[key]*2; };
+			if( result[key] >= 0 ){ result[key] = 0;};
+		};
 
+		this.content.style.backgroundPosition = `${result.x}px ${result.y}px`; //установка позиции фона в риалтайм
+	}
 	setBckgAnim(){//установка анимации
 		let mapBckgSize = this.getMapBckgSize();
 
